@@ -1,0 +1,33 @@
+FROM bitnami/minideb:stretch
+RUN /bin/bash
+
+# Avoid asking for geographic data when installing tzdata.
+# ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get -y update
+RUN apt-get -y install wget
+RUN apt-get install -y tcl-dev tk-dev git
+
+
+# OOMMF cannot be built as root user.
+RUN adduser user
+USER user
+WORKDIR /home/user
+
+# Fetch OOMMF
+RUN wget https://math.nist.gov/oommf/dist/oommf20a2_20200608-hotfix.tar.gz
+RUN tar xfz oommf20a2_20200608-hotfix.tar.gz
+WORKDIR /home/user/oommf
+
+# Compile OOMMF according to Readme
+RUN ./oommf.tcl pimake +platform > pimake-platform-output.txt
+RUN ./oommf.tcl pimake distclean
+RUN ./oommf.tcl pimake upgrade
+RUN ./oommf.tcl pimake
+
+# Create test:
+RUN echo "tclsh oommf.tcl boxsi +fg app/oxs/examples/stdprob3.mif -exitondone 1" > run-test.sh
+# execute test (takes about 14 seconds on 2 threads)
+RUN sh run-test.sh
+
+CMD /bin/bash
