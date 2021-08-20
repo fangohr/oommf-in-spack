@@ -22,11 +22,8 @@ RUN cd spack && git show
 
 RUN mkdir spack/var/spack/repos/builtin/packages/oommf
 COPY spack/package.py spack/var/spack/repos/builtin/packages/oommf
+RUN . spack/share/spack/setup-env.sh && spack spec oommf
 RUN . spack/share/spack/setup-env.sh && spack install oommf
-
-# if the above fails, we get some more details by repeatid
-# the last command:
-RUN . spack/share/spack/setup-env.sh && spack install --verbose oommf
 
 # Run spack smoke tests
 RUN . spack/share/spack/setup-env.sh && spack test run --alias oommftest oommf
