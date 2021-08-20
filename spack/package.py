@@ -30,13 +30,11 @@ Summary taken from OOMMF documentation https://math.nist.gov/oommf/
     homepage = "https://math.nist.gov/oommf/"
     url      = "https://math.nist.gov/oommf/dist/oommf20a2_20200608-hotfix.tar.gz"
 
-    # FIXME: Add a list of GitHub accounts to
-    # notify when the package is updated.
     maintainers = ['fangohr']
 
     version('20200608-hotfix', sha256='5c349de6e698b0c2c5390aa0598ea3052169438cdcc7e298068bc03abb9761c8')
 
-    depends_on('tk', type=("build", "run"))
+    depends_on('tk~xss~xft', type=("build", "run"))
     depends_on('tcl', type=("build", "run"))
 
     phases = ['configure', 'build', 'install']
@@ -221,3 +219,4 @@ Summary taken from OOMMF documentation https://math.nist.gov/oommf/
         self.run_test(exe, options=options, expected=expected, status=[0],
              installed=False, purpose=purpose, skip_missing=False,
              work_dir=None)
+
