@@ -38,6 +38,7 @@ Summary taken from OOMMF documentation https://math.nist.gov/oommf/
 
     depends_on('tk', type=("build", "run"))
     depends_on('tcl', type=("build", "run"))
+    depends_on('libx11', type=("build", "run"))
 
     phases = ['configure', 'build', 'install']
 
