@@ -19,6 +19,8 @@ RUN cd spack && git checkout v0.16.0
 # copy the package.py for oommf into the spack repo tree
 RUN mkdir spack/var/spack/repos/builtin/packages/oommf
 COPY spack/package.py spack/var/spack/repos/builtin/packages/oommf
+RUN . spack/share/spack/setup-env.sh && spack install oommf
+
 RUN . spack/share/spack/setup-env.sh && spack install --verbose oommf
 
 # Run spack smoke tests
@@ -29,7 +31,7 @@ RUN . spack/share/spack/setup-env.sh && spack test result -l oommftest
 RUN mkdir mif-examples
 COPY mif-examples/* mif-examples
 
-RUN . spack/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1" 
+RUN . spack/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
 
 CMD /bin/bash
 
