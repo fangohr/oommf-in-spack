@@ -28,7 +28,7 @@ We can run some additional checks with these commands:
 - `spack test run --alias oommftest oommf`
 
 To see the results, use
-- `spack test result -l oommftest`
+- `spack test results -l oommftest`
 
 ## To use OOMMF after installation
 
