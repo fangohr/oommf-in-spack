@@ -9,7 +9,7 @@ Support repository for getting the [OOMMF](https://math.nist.gov/oommf/) package
 At the moment, this is under development, and we need two lines:
 
 - get spack: `git clone https://github.com/fangohr/spack`
-- checkout the right branch: `git checkout add-oommf-on-v0.16.0`
+- checkout the right branch: `git checkout add-oommf`
 
 Then activate spack:
 
