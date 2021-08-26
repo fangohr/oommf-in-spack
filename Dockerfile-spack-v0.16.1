@@ -14,11 +14,7 @@ WORKDIR /home/user
 
 # install spack
 RUN git clone https://github.com/spack/spack.git
-# default branch is develop
-RUN cd spack && git checkout develop
-
-# show which version we use
-RUN cd spack && git show
+RUN cd spack && git checkout v0.16.1
 
 RUN mkdir spack/var/spack/repos/builtin/packages/oommf
 COPY spack/package.py spack/var/spack/repos/builtin/packages/oommf
@@ -28,12 +24,12 @@ RUN . spack/share/spack/setup-env.sh && spack install oommf
 # Run spack smoke tests
 RUN . spack/share/spack/setup-env.sh && spack test run --alias oommftest oommf
 RUN . spack/share/spack/setup-env.sh && spack test result -l oommftest 
-
+ 
 # Run OOMMF example in container
-# RUN mkdir mif-examples
-# COPY mif-examples/* mif-examples
-# 
-# RUN . spack/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1" 
+RUN mkdir mif-examples
+COPY mif-examples/* mif-examples
+ 
+# RUN . spack/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
 
 CMD /bin/bash
 
