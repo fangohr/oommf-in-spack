@@ -10,11 +10,8 @@ RUN apt-get -y update
 # Convenience tools
 RUN apt-get -y install wget time nano vim emacs git
 
-# Fool container into providing everything needed for X (Robert's idea)
-# RUN apt-get -y install x11-apps
-
 # Does it help to use the system tk (suspicous obversation in spack built on host)
-RUN apt-get -y install tcl-dev tk-dev
+RUN apt-get -y install tk-dev
 
 # From https://github.com/ax3l/dockerfiles/blob/master/spack/base/Dockerfile:
 # install minimal spack depedencies
@@ -35,21 +32,14 @@ RUN        apt-get update \
            && rm -rf /var/lib/apt/lists/*
 
 
-
-
-# tools that spack needs (Hans' original list)
-# RUN apt-get -y install python curl git make patch zstd tar gzip unzip bzip2 gcc g++
-
 # load spack environment on login
 RUN echo "source $SPACK_ROOT/share/spack/setup-env.sh" \
            > /etc/profile.d/spack.sh
-
 
 # # OOMMF cannot be built as root user.
 RUN adduser user
 USER user
 WORKDIR /home/user
-
 
 # install spack
 RUN mkdir $SPACK_ROOT
@@ -90,8 +80,6 @@ RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install oommf
 # # Run spack smoke tests
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack test run --alias oommftest oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack test results -l oommftest 
-# 
-
 
 
 # Run OOMMF example in container
