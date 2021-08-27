@@ -7,6 +7,8 @@ RUN apt-get -y install wget time nano vim emacs git
 # tools that spack needs
 RUN apt-get -y install python curl git make patch zstd tar gzip unzip bzip2 gcc g++
 
+# Does having tk and tcl available make a difference?
+RUN apt-get -y install tk-dev tcl-dev
 # OOMMF cannot be built as root user.
 RUN adduser user
 USER user
@@ -22,6 +24,7 @@ RUN cd spack && git show
 
 RUN mkdir spack/var/spack/repos/builtin/packages/oommf
 COPY spack/package.py spack/var/spack/repos/builtin/packages/oommf
+RUN . spack/share/spack/setup-env.sh && spack install tk
 RUN . spack/share/spack/setup-env.sh && spack install oommf
 
 # if the above fails, we get some more details by repeatid
