@@ -19,6 +19,7 @@ RUN cd spack && git checkout v0.16.0
 # copy the package.py for oommf into the spack repo tree
 RUN mkdir spack/var/spack/repos/builtin/packages/oommf
 COPY spack/package.py spack/var/spack/repos/builtin/packages/oommf
+RUN . spack/share/spack/setup-env.sh && spack spec oommf
 RUN . spack/share/spack/setup-env.sh && spack install oommf
 
 RUN . spack/share/spack/setup-env.sh && spack install --verbose oommf
