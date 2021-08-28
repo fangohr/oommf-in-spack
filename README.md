@@ -2,6 +2,14 @@
 
 Support repository for getting the [OOMMF](https://math.nist.gov/oommf/) package into [Spack](http://spack.readthedocs.io).
 
+## Status
+
+![compile-oommf-in-debian](https://github.com/fangohr/oommf-in-spack/actions/workflows/native-debian-latest.yml/badge.svg)
+
+![spack-develop-builds-oommf](https://github.com/fangohr/oommf-in-spack/actions/workflows/spack-develop.yml/badge.svg)
+
+![spack-v0.16.2-builds-oommf](https://github.com/fangohr/oommf-in-spack/actions/workflows/spack-v0.16.2.yaml/badge.svg)
+
 # Required commands
 
 ## Compilation of OOMMF
