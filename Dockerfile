@@ -87,7 +87,13 @@ RUN mkdir mif-examples
 COPY mif-examples/* mif-examples/
 # # 
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
-# 
+#
+
+# Show that we do not depend on debian package tk-dev for execution of OOMMF
+
+USER root
+RUN apt remove -y tk-dev
+USER user
+RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
+
 CMD /bin/bash -l
-
-
