@@ -1,10 +1,16 @@
 FROM debian:bullseye
 
+# # which spack version are we using now? Default is develop
+# # but other strings can be given to the docker build command
+# # (for example docker build --build-arg SPACK_VERSION=v0.16.2)
+ARG SPACK_VERSION=develop
+RUN echo "Building with spack version ${SPACK_VERSION}"
+
+
 # general environment for docker
-#ENV        DEBIAN_FRONTEND=noninteractive \
-ENV        SPACK_ROOT=/home/user/spack \
-	   SPACK=/home/user/spack/bin/spack \
-           FORCE_UNSAFE_CONFIGURE=1
+ENV SPACK_ROOT=/home/user/spack \
+	  SPACK=/home/user/spack/bin/spack \
+    FORCE_UNSAFE_CONFIGURE=1
 
 RUN apt-get -y update
 # Convenience tools
@@ -31,7 +37,6 @@ RUN        apt-get update \
               vim \
            && rm -rf /var/lib/apt/lists/*
 
-
 # load spack environment on login
 RUN echo "source $SPACK_ROOT/share/spack/setup-env.sh" \
            > /etc/profile.d/spack.sh
@@ -41,46 +46,34 @@ RUN adduser user
 USER user
 WORKDIR /home/user
 
-# install spack
-RUN mkdir $SPACK_ROOT
-RUN        curl -s -L https://github.com/llnl/spack/archive/develop.tar.gz \
-           | tar xzC $SPACK_ROOT --strip 1
+# # install spack
+# RUN mkdir $SPACK_ROOT
+# RUN        curl -s -L https://github.com/llnl/spack/archive/develop.tar.gz \
+#            | tar xzC $SPACK_ROOT --strip 1
 # note: at this point one could also run ``spack bootstrap`` to avoid
 #       parts of the long apt-get install list above
 
-# install software
-RUN        $SPACK install tar \
-           && $SPACK clean -a
 
-# need the modules already during image build?
-#RUN        /bin/bash -l -c ' \
-#                $SPACK load tar \
-#                && which tar'
+#
+# install spack
+RUN git clone https://github.com/spack/spack.git
+# default branch is develop
+RUN cd spack && git checkout $SPACK_VERSION
 
-# 
-# 
-# # install spack
-# RUN git clone https://github.com/spack/spack.git
-# # default branch is develop
-# RUN cd spack && git checkout develop
-# 
 # # show which version we use
 RUN $SPACK --version
 #
-CMD /bin/bash -l
 
-
+# build OOMMF
 RUN mkdir $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 COPY spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack spec oommf
-#RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install tk
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install oommf
-# 
-# # Run spack smoke tests
+
+# # Run spack smoke tests for oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack test run --alias oommftest oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack test results -l oommftest 
-
 
 # Run OOMMF example in container
 RUN mkdir mif-examples
@@ -89,5 +82,3 @@ COPY mif-examples/* mif-examples/
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
 # 
 CMD /bin/bash -l
-
-
