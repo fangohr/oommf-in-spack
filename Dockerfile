@@ -18,7 +18,11 @@ ENV SPACK_ROOT=/home/user/spack \
 RUN apt-get -y update
 # Convenience tools
 RUN apt-get -y install wget time nano vim emacs git ${EXTRA_PACKAGES}
+RUN apt remove -y ${EXTRA_PACKAGES}
 
+# at this point, we do not depend on ${EXTRA_PACKAGES}, but maybe on dependencies of
+# of those?
+#
 # From https://github.com/ax3l/dockerfiles/blob/master/spack/base/Dockerfile:
 # install minimal spack depedencies
 RUN        apt-get install -y --no-install-recommends \
@@ -67,7 +71,7 @@ RUN $SPACK --version
 RUN mkdir $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 COPY spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack spec oommf
-RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install tk
+# RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install tk
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install oommf
 
 # # Run spack smoke tests for oommf
@@ -77,15 +81,19 @@ RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack test results -l oommftest
 # Run OOMMF example in container
 RUN mkdir mif-examples
 COPY mif-examples/* mif-examples/
+USER root
+RUN chown user mif-examples/*
+USER user
+RUN ls -l mif-examples
 # # 
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
 
 # Show that we do not depend on debian package tk-dev for execution of OOMMF
 
-USER root
-RUN apt remove -y ${EXTRA_PACKAGES}
-USER user
-RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
+# USER root
+# RUN apt remove -y ${EXTRA_PACKAGES}
+# USER user
+# RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
 
 CMD /bin/bash -l
 
