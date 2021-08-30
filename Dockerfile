@@ -24,7 +24,7 @@ RUN apt remove -y ${EXTRA_PACKAGES}
 # of those?
 #
 # From https://github.com/ax3l/dockerfiles/blob/master/spack/base/Dockerfile:
-# install minimal spack depedencies
+# install minimal spack dependencies
 RUN        apt-get install -y --no-install-recommends \
               autoconf \
               build-essential \
@@ -80,10 +80,7 @@ RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack test results -l oommftest
 
 # Run OOMMF example in container
 RUN mkdir mif-examples
-COPY mif-examples/* mif-examples/
-USER root
-RUN chown user mif-examples/*
-USER user
+COPY --chown=user:user mif-examples/* mif-examples/
 RUN ls -l mif-examples
 # # 
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
