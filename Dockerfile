@@ -6,6 +6,9 @@ FROM debian:bullseye
 ARG SPACK_VERSION=develop
 RUN echo "Building with spack version ${SPACK_VERSION}"
 
+# Any extra packages to be installed in the host
+ARG EXTRA_PACKAGES
+RUN echo "Installing EXTRA_PACKAGES ${EXTRA_PACKAGES} on container host"
 
 # general environment for docker
 ENV SPACK_ROOT=/home/user/spack \
@@ -14,15 +17,15 @@ ENV SPACK_ROOT=/home/user/spack \
 
 RUN apt-get -y update
 # Convenience tools
-RUN apt-get -y install wget time nano vim emacs git
+RUN apt-get -y install wget time nano vim emacs git ${EXTRA_PACKAGES}
+RUN apt remove -y ${EXTRA_PACKAGES}
 
-# Does it help to use the system tk (suspicous obversation in spack built on host)
-RUN apt-get -y install tk-dev
-
+# at this point, we do not depend on ${EXTRA_PACKAGES}, but maybe on dependencies of
+# of those?
+#
 # From https://github.com/ax3l/dockerfiles/blob/master/spack/base/Dockerfile:
-# install minimal spack depedencies
-RUN        apt-get update \
-           && apt-get install -y --no-install-recommends \
+# install minimal spack dependencies
+RUN        apt-get install -y --no-install-recommends \
               autoconf \
               build-essential \
               ca-certificates \
@@ -68,7 +71,7 @@ RUN $SPACK --version
 RUN mkdir $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 COPY spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack spec oommf
-RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install tk
+# RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install tk
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install oommf
 
 # # Run spack smoke tests for oommf
@@ -77,16 +80,17 @@ RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack test results -l oommftest
 
 # Run OOMMF example in container
 RUN mkdir mif-examples
-COPY mif-examples/* mif-examples/
+COPY --chown=user:user mif-examples/* mif-examples/
+RUN ls -l mif-examples
 # # 
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
 
 # Show that we do not depend on debian package tk-dev for execution of OOMMF
 
-USER root
-RUN apt remove -y tk-dev
-USER user
-RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
+# USER root
+# RUN apt remove -y ${EXTRA_PACKAGES}
+# USER user
+# RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
 
 CMD /bin/bash -l
 
