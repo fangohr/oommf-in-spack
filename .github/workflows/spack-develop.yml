@@ -1,4 +1,4 @@
-name: spack-develop
+name: build-which-package
 
 on:
   push:
@@ -15,5 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      #run: docker build . --file Dockerfile --tag spack-develop
-      run: make oommf-spack
+      run: make build-which-package
