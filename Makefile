@@ -10,6 +10,16 @@ oommf-spack:
 	docker build -f Dockerfile -t oommf-spack --build-arg SPACK_VERSION=develop \
   --build-arg EXTRA_PACKAGES=tk-dev .
 
+# Install oomm via spack. Using most recent spack version
+build-which-package:
+	@# create two list of packages
+	docker build -f Dockerfile-which -t oommf-spack-which --build-arg SPACK_VERSION=v0.16.2 \
+  --build-arg EXTRA_PACKAGES=tk-dev .
+	sh get-files-from-container.sh
+	@# which are new?
+	python extract_new_packages.py
+	python extract_new_packages.py > new_packages_with_x.txt
+
 run-spack:
 	docker run --rm -ti oommf-spack bash
 
@@ -22,8 +32,4 @@ oommf-spack-v0.16.1:
 	docker build -f Dockerfile --build-arg SPACK_VERSION=v0.16.1 \
   --build-arg EXTRA_PACKAGES=tk-dev . -t oommf-spack-v0.16.1 .
 
-oommf-spack-v0.16.2-no-tk:
-	docker build -f Dockerfile --build-arg SPACK_VERSION=v0.16.2 -t oommf-spack-v0.16.2 .
-
-
-.PHONY: oommf-spack-v0.16.1 oommf-spack-v0.16.2 oommf-spack run-spack oommf-spack-v0.16.2-no-tk
+.PHONY: oommf-spack-v0.16.1 oommf-spack-v0.16.2 oommf-spack run-spack 
