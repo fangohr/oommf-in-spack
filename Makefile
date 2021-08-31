@@ -15,10 +15,10 @@ build-which-package:
 	@# create two list of packages
 	docker build -f Dockerfile-which -t oommf-spack-which --build-arg SPACK_VERSION=v0.16.2 \
   --build-arg EXTRA_PACKAGES=tk-dev .
-	sh get-files-from-container.sh
+	@#sh get-files-from-container.sh
 	@# which are new?
-	python extract_new_packages.py
-	python extract_new_packages.py > new_packages_with_x.txt
+	@#/home/fangohr/.pyenv/versions/anaconda3-2020.11/bin/python extract_new_packages.py
+	@#/home/fangohr/.pyenv/versions/anaconda3-2020.11/bin/python extract_new_packages.py > new_packages_with_x.txt
 
 run-spack:
 	docker run --rm -ti oommf-spack bash
