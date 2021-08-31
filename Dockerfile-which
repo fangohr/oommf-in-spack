@@ -269,9 +269,9 @@ RUN apt-get install -y --no-install-recommends\
     sensible-utils\
     shared-mime-info\
     tcl\
-    tcl-dev
-    tcl8.6
-    tcl8.6-dev\
+    tcl-dev \
+    tcl8.6\
+    tcl8.6-dev
 #     tk\
 #    tk8.6\
 #    tk8.6-dev\
