@@ -51,6 +51,8 @@ assert sorted(list(diff1))[0:10] == []
 with open("new-packages.txt", "tw") as f_out:
     f_out.write("\n".join(sorted(list(diff2))))
 
+with open("new-packages-basename.txt", "tw") as f_out:
+    f_out.write("\n".join(sorted([x.split('/')[0] for x in list(diff2)])))
 
 # In[71]:
 
