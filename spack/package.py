@@ -101,9 +101,14 @@ Summary taken from OOMMF documentation https://math.nist.gov/oommf/
 
         print("Testing oommf.tcl +version")
 
-        oommf = Executable(join_path(spec.prefix.bin, "oommf.tcl"))
+        # where is tcl?
+        tclsh = Executable(join_path(spec['tcl'].prefix.bin, "tclsh"))
+        # where is oommf.tcl?
+        oommf_tcl_path = join_path(spec.prefix.bin, "oommf.tcl")
+        # put the command together and execute
+        output = tclsh(oommf_tcl_path, "+version", output=str.split,
+                       error=str.split, env=test_env)
 
-        output = oommf("+version", output=str.split, error=str.split, env=test_env)
         print("ouput received fromm oommf is '{}".format(output))
 
 
@@ -122,6 +127,14 @@ Summary taken from OOMMF documentation https://math.nist.gov/oommf/
         test_env["OOMMF_ROOT"] = oommfdir
 
         print("Testing oommf.tcl +platform")
+
+        # where is tcl?
+        tclsh = Executable(join_path(spec['tcl'].prefix.bin, "tclsh"))
+        # where is oommf.tcl?
+        oommf_tcl_path = join_path(spec.prefix.bin, "oommf.tcl")
+        # put the command together and execute
+        output = tclsh(oommf_tcl_path, "+platform", output=str.split,
+                       error=str.split, env=test_env)
 
         oommf = Executable(join_path(spec.prefix.bin, "oommf.tcl"))
 
