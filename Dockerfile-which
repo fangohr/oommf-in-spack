@@ -81,18 +81,6 @@ RUN mkdir $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 COPY spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack spec oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install tk
-
-USER root
-
-RUN apt-get update -y
-
-RUN apt-get install -y --no-install-recommends\
- libtk8.6\
- x11proto-dev
-
-# CMD /bin/bash -l
-
-USER user
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install --verbose oommf
   
 
