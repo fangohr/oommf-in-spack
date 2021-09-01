@@ -36,8 +36,9 @@ Summary taken from OOMMF documentation https://math.nist.gov/oommf/
 
     version('20200608-hotfix', sha256='5c349de6e698b0c2c5390aa0598ea3052169438cdcc7e298068bc03abb9761c8')
 
-    depends_on('tk', type=("build", "run"))
-    depends_on('tcl', type=("build", "run"))
+    depends_on('tk', type=("build", "link", "test", "run"))
+    depends_on('tcl', type=("build", "link", "test", "run"))
+    depends_on('xproto', type=("build", "link", "test", "run"))
 
     phases = ['configure', 'build', 'install']
 
