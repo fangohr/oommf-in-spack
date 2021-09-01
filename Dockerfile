@@ -20,8 +20,8 @@ RUN apt-get -y update
 # RUN apt-get -y install wget time nano vim emacs git
 
 RUN apt list --installed > packages-before.txt
-RUN apt-get -y install ${EXTRA_PACKAGES} x11proto-dev
-RUN apt remove -y ${EXTRA_PACKAGES}
+#RUN apt-get -y install ${EXTRA_PACKAGES} x11proto-dev libtk8.6
+#RUN apt remove -y ${EXTRA_PACKAGES}
 RUN apt list --installed > packages-after.txt
 
 # Does autoremove break the compilation?
