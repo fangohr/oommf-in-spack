@@ -30,21 +30,17 @@ Summary taken from OOMMF documentation https://math.nist.gov/oommf/
     homepage = "https://math.nist.gov/oommf/"
     url      = "https://math.nist.gov/oommf/dist/oommf20a2_20200608-hotfix.tar.gz"
 
-    # FIXME: Add a list of GitHub accounts to
-    # notify when the package is updated.
     maintainers = ['fangohr']
 
     version('20200608-hotfix', sha256='5c349de6e698b0c2c5390aa0598ea3052169438cdcc7e298068bc03abb9761c8')
 
     depends_on('tk', type=("build", "link", "test", "run"))
     depends_on('tcl', type=("build", "link", "test", "run"))
-    depends_on('xproto', type=("build", "link", "test", "run"))
+    depends_on('xproto', type=("build"))
 
     phases = ['configure', 'build', 'install']
 
     # sanity checks: (https://spack.readthedocs.io/en/latest/packaging_guide.html#checking-an-installation)
-    #
-    # this file must exist in the installation environment for the install to be considered a success
     sanity_check_is_file = [join_path('bin', 'oommf.tcl')]
     sanity_check_is_dir = ['usr/bin/oommf/app', 'usr/bin/oommf/app/oxs/eamples']
     
