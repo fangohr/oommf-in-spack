@@ -19,7 +19,7 @@ jobs:
       - name: install spack
         run: |
           git clone https://github.com/spack/spack.git s
-          cd s && git checkout develop
+          cd s && git checkout develop && cd ..
           ./s/bin/spack --version
       - name: compile tk and oommftest
         run: |
