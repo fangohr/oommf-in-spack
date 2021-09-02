@@ -34,5 +34,4 @@ jobs:
           . s/share/spack/setup-env.sh && spack test results -l oommftest 
       - name: run standard problem 3 directly
         run: |
-          mkdir mif-examples
           . s/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
