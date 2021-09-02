@@ -17,11 +17,10 @@ ENV SPACK_ROOT=/home/user/spack \
 
 RUN apt-get -y update
 # Convenience tools
-RUN apt-get -y install wget time nano vim emacs git ${EXTRA_PACKAGES}
-RUN apt remove -y ${EXTRA_PACKAGES}
+# RUN apt-get -y install wget time nano vim emacs git
 
-# at this point, we do not depend on ${EXTRA_PACKAGES}, but maybe on dependencies of
-# of those?
+# Does autoremove break the compilation?
+RUN apt autoremove -y
 #
 # From https://github.com/ax3l/dockerfiles/blob/master/spack/base/Dockerfile:
 # install minimal spack dependencies
@@ -49,15 +48,6 @@ RUN adduser user
 USER user
 WORKDIR /home/user
 
-# # install spack
-# RUN mkdir $SPACK_ROOT
-# RUN        curl -s -L https://github.com/llnl/spack/archive/develop.tar.gz \
-#            | tar xzC $SPACK_ROOT --strip 1
-# note: at this point one could also run ``spack bootstrap`` to avoid
-#       parts of the long apt-get install list above
-
-
-#
 # install spack
 RUN git clone https://github.com/spack/spack.git
 # default branch is develop
@@ -65,13 +55,12 @@ RUN cd spack && git checkout $SPACK_VERSION
 
 # # show which version we use
 RUN $SPACK --version
-#
 
 # build OOMMF
 RUN mkdir $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 COPY spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack spec oommf
-# RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install tk
+RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install tk
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install oommf
 
 # # Run spack smoke tests for oommf
@@ -84,13 +73,6 @@ COPY --chown=user:user mif-examples/* mif-examples/
 RUN ls -l mif-examples
 # # 
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
-
-# Show that we do not depend on debian package tk-dev for execution of OOMMF
-
-# USER root
-# RUN apt remove -y ${EXTRA_PACKAGES}
-# USER user
-# RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
 
 CMD /bin/bash -l
 
