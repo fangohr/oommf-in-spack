@@ -1,4 +1,4 @@
-name: spack-develop-osx
+name: osx-spack-develop
 
 on:
   push:
