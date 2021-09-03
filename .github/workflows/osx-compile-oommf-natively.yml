@@ -29,8 +29,11 @@ jobs:
           make build
       - name: run version and platform
         run: |
-          tclsh oommf/oommf/.tcl +version
-          tclsh oommf/oommf/.tcl +platform
+          pwd
+          cd oommf
+          pwd
+          tclsh oommf/oommf.tcl +version
+          tclsh oommf/oommf.tcl +platform
       - name: run standard problem 3 directly
         run: |
           cd oommf
