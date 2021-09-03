@@ -1,4 +1,4 @@
-name: spack-v0.16.2
+name: debian-compile-oommf-natively
 
 on:
   push:
@@ -15,5 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: make oommf-spack-v0.16.2 
+      run: docker build . --file Dockerfile-without-spack --tag native-debian:$(date +%s)
       
+    
