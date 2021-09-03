@@ -16,7 +16,7 @@ jobs:
         run: |
           brew update
           brew install gh
-      - name: install spack
+      - name: install oommf from https://github.com/fangohr/oommf
         run: |
           git clone https://github.com/fangohr/oommf
           cd oommf
@@ -24,6 +24,7 @@ jobs:
           cat oommf-version
       - name: compile oommf
         run: |
+          cd oommf
           pwd
           make build
       - name: run version and platform
@@ -32,4 +33,5 @@ jobs:
           tclsh oommf/oommf/.tcl +platform
       - name: run standard problem 3 directly
         run: |
+          cd oommf
           make test-all
