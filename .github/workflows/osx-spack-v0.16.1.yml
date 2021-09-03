@@ -1,4 +1,7 @@
-name: osx-spack-v0.16.2
+name: osx-spack-v0.16.1
+
+# Note: Compilation on OSX with v0.16.2 seems to fail:
+# https://github.com/fangohr/oommf-in-spack/pull/12/checks?check_run_id=3503270682#step:5:66
 
 on:
   push:
@@ -19,7 +22,7 @@ jobs:
       - name: install spack
         run: |
           git clone https://github.com/spack/spack.git s
-          cd s && git checkout v0.16.2 && cd ..
+          cd s && git checkout v0.16.1 && cd ..
           ./s/bin/spack --version
       - name: compile tk and oommftest
         run: |
