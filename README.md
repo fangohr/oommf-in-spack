@@ -10,6 +10,13 @@ Support repository for getting the [OOMMF](https://math.nist.gov/oommf/) package
 
 ![spack-v0.16.2-builds-oommf](https://github.com/fangohr/oommf-in-spack/actions/workflows/spack-v0.16.2.yaml/badge.svg)
 
+[![debian-compile-oommf-natively](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-compile-oommf-natively.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-compile-oommf-natively.yml)
+[![debian-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml)
+[![debian-spack-v0.16.2](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.2.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.2.yml)
+[![osx-spack-v0.16.1](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.1.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.1.yml)
+[![osx-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml)
+
+
 # Required commands
 
 ## Compilation of OOMMF
