@@ -23,14 +23,15 @@ Compile OOMMF on OSX with Spack:
 
 ## Compilation of OOMMF
 
-At the moment, this is under development, and we need two lines:
+At the moment, this is under development, and we need three lines:
 
 - get spack: `git clone https://github.com/fangohr/spack`
+- go into spack directory `cd spack`
 - checkout the right branch: `git checkout add-oommf`
 
 Then activate spack:
 
-- `source spack/share/spack/setup-env.sh`
+- `source share/spack/setup-env.sh`
 
 The compile oommf (this could take some time)
 
@@ -49,9 +50,9 @@ To see the results, use
 
 ## To use OOMMF after installation
 
-1. Activate spack:
+1. Activate spack (adjust the path below if not inside spack directory):
 
-- `source spack/share/spack/setup-env.sh`
+- `source share/spack/setup-env.sh`
 
 2. Load oommf
 
