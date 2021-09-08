@@ -35,13 +35,15 @@ class Oommf(Package):
 
     maintainers = ["fangohr"]
 
+    version('20a1_20180930_ext', sha256='18bf9bd713c7ee6ced6d561ce742d17e0588ae24ef2e56647a5c8a7853e07a4c')
+
     version(
         "20200608-hotfix-vanilla",
         sha256="5c349de6e698b0c2c5390aa0598ea3052169438cdcc7e298068bc03abb9761c8",
         url = "https://math.nist.gov/oommf/dist/oommf20a2_20200608-hotfix.tar.gz"
     )
 
-    version('20a1_20180930_ext', sha256='18bf9bd713c7ee6ced6d561ce742d17e0588ae24ef2e56647a5c8a7853e07a4c')
+
     version('20a1_20180930',     sha256='c871e0dbb1522c3c1314af6c084b90cdbe69fd869b55ac94443851b74f818ed2')
     version('20170929a0',        sha256='3439d1c9e95cc7395bc2e2330bba8cf198585d1b350251ea8561c1554ff8c7fd')
     version('20160930b1',        sha256='363006f549bb63a39564fafc18b52342a14c1c3769c214467a39f72a0c0be36b')
