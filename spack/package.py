@@ -28,6 +28,12 @@ class Oommf(Package):
     OOMMF home page: "https://math.nist.gov/oommf/"
 
     OOMMF as a git repository: https://github.com/fangohr/oommf
+
+    Versions ending with "-vanilla" indicate that the sources are taken
+    directly from https://math.nist.gov/oommf/dist/ . All other versions are
+    from the https://github.com/fangohr/oommf (which includes the "-vanilla"
+    sources, and adds additional OOMMF extensions). See
+    https://github.com/fangohr/oommf for details.
     """
 
     homepage = "https://math.nist.gov/oommf/"
