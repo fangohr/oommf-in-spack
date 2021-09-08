@@ -77,11 +77,11 @@ class Oommf(Package):
         """
         if 'oommf.tcl' in os.listdir():
             print(f"Found 'oommf.tcl' in {os.getcwd()} "
-                  "(looks like source from NIST?)")
+                  "(looks like source from NIST)")
             return "."
         elif 'oommf.tcl' in os.listdir('oommf'):
             print(f"Found 'oommf.tcl' in {os.getcwd()}/oommf "
-                  "(looks like source from Github?)")
+                  "(looks like source from Github)")
             return "oommf"
         else:
             raise ValueError(f"Cannot find 'oommf.tcl' in {os.getcwd()}")
