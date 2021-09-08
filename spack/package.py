@@ -87,7 +87,9 @@ class Oommf(Package):
             raise ValueError(f"Cannot find 'oommf.tcl' in {os.getcwd()}")
 
     def get_oommf_path(self, prefix):
-        """Given the prefix, return the full path of the OOMMF installation below `prefix`."""
+        """Given the prefix, return the full path of the OOMMF installation
+        below `prefix`."""
+
         oommfdir = os.path.join(prefix.usr.bin, "oommf")
         return oommfdir
 
