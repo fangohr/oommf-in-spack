@@ -69,12 +69,32 @@ class Oommf(Package):
     sanity_check_is_file = [join_path("bin", "oommf.tcl")]
     sanity_check_is_dir = ["usr/bin/oommf/app", "usr/bin/oommf/app/oxs/eamples"]
 
+    def get_oommf_source_root(self):
+        """If we download the source from NIST, then 'oommf.tcl' is in the root directory.
+        if we download from github, then it is in 'oommf/oommf.tcl'. 
+
+        Here, we try to find the relative path to that file, and return it.
+        """
+        if 'oommf.tcl' in os.listdir():
+            print(f"Found 'oommf.tcl' in {os.getcwd()} "
+                  "(looks like source from NIST?)")
+            return "."
+        elif 'oommf.tcl' in os.listdir('oommf'):
+            print(f"Found 'oommf.tcl' in {os.getcwd()}/oommf "
+                  "(looks like source from Github?)")
+            return "oommf"
+        else:
+            raise ValueError(f"Cannot find 'oommf.tcl' in {os.getcwd()}")
+
     def get_oommf_path(self, prefix):
         """Given the prefix, return the full path of the OOMMF installation below `prefix`."""
         oommfdir = os.path.join(prefix.usr.bin, "oommf")
         return oommfdir
 
     def configure(self, spec, prefix):
+        # change into directory with source code
+        os.chdir(self.get_oommf_source_root())
+
         configure = Executable("./oommf.tcl pimake distclean")
         configure()
         configure2 = Executable("./oommf.tcl pimake upgrade")
