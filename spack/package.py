@@ -31,7 +31,7 @@ class Oommf(Package):
     """
 
     homepage = "https://math.nist.gov/oommf/"
-    url = ""https://github.com/fangohr/oommf/archive/refs/tags/20a1_20180930_ext.tar.gz"
+    url = "https://github.com/fangohr/oommf/archive/refs/tags/20a1_20180930_ext.tar.gz"
 
     maintainers = ["fangohr"]
 
