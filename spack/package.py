@@ -1,3 +1,4 @@
+
 # Copyright 2013-2021 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
@@ -43,12 +44,15 @@ class Oommf(Package):
     maintainers = ["fangohr"]
 
     # version from github (uses default url variable)
-    version('20a1_20180930_ext',
-            sha256='18bf9bd713c7ee6ced6d561ce742d17e0588ae24ef2e56647a5c8a7853e07a4c',
+    version('20a2_20200608', 
+            sha256='a3113f2aca0b6249ee99b2f4874f31de601bd7af12498d84f28706b265fa50ab',
             preferred=True)
 
+    version('20a1_20180930_ext',
+            sha256='18bf9bd713c7ee6ced6d561ce742d17e0588ae24ef2e56647a5c8a7853e07a4c')
+
     # (currently most) recent version from OOMMF website
-    version( "20a2_20200608-hotfix-vanilla",
+    version( "20a2_20200608-vanilla",
              sha256="5c349de6e698b0c2c5390aa0598ea3052169438cdcc7e298068bc03abb9761c8",
              url =
              "https://math.nist.gov/oommf/dist/oommf20a2_20200608-hotfix.tar.gz" )
