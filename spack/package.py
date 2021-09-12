@@ -77,7 +77,7 @@ class Oommf(Package):
 
 
     depends_on("tk", type=("build", "link", "test", "run"))
-    depends_on("tcl", type=("build", "link", "test", "run"))
+    depends_on("tcl", type=("build", "test", "run"))
     depends_on("xproto", type=("build"))
 
     phases = ["configure", "build", "install"]
@@ -232,13 +232,6 @@ class Oommf(Package):
 
     def test(self):
         """Run these smoke tests when requested explicitly"""
-        test_env = {}
-
-        # This environment variable (OOMMF_ROOT) seems not to be
-        # set at this point, so we have to set it manually for the test:
-        oommfdir = self.get_oommf_path(self.prefix)
-        test_env["OOMMF_ROOT"] = oommfdir
-
         ## run "oommf +version"
 
         spec = self.spec
