@@ -13,11 +13,13 @@ Compile OOMMF on (Debian) Linux with spack:
 [![debian-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml)
 [![debian-spack-v0.16.2](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.2.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.2.yml)
 
+For information: (not part of this `main` branch)
+
 Compile OOMMF on OSX with Spack: 
 
-[![osx-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml)
+[![osx-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml)
 
-[![osx-spack-v0.16.2-plus-epsilon](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml)
+[![osx-spack-v0.16.2-plus-epsilon](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml)
 
 
 # Required commands
