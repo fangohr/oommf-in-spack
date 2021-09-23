@@ -15,7 +15,7 @@ on:
     branches: [ osx ]
   pull_request:
     branches: [ osx ]
-  on schedule:
+  schedule:
     - cron: "0 6 * * 0" 
 
 jobs:
