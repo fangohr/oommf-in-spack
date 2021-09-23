@@ -2,9 +2,11 @@ name: debian-spack-develop
 
 on:
   push:
-    branches: [ main ]
+    branches: [ spack-develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ spack-develop ]
+  schedule:
+    - cron: "3 0 * * 1"
 
 jobs:
 
