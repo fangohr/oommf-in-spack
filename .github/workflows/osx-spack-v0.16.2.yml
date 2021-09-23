@@ -12,9 +12,11 @@ name: osx-spack-v0.16.2
 
 on:
   push:
-    branches: [ main ]
+    branches: [ osx ]
   pull_request:
-    branches: [ main ]
+    branches: [ osx ]
+  on schedule:
+    - cron: "0 6 * * 0" 
 
 jobs:
   build:
