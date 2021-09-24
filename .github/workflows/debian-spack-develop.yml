@@ -1,11 +1,16 @@
 name: debian-spack-develop
 
 on:
+  # Trigger the workflow on push or pull request,
+  # but only for the spack-develop branch
   push:
-    branches: [ spack-develop ]
+    branches:
+      - spack-develop
   pull_request:
-    branches: [ spack-develop ]
+    branches:
+      - spack-develop
   schedule:
+    # also run periodically
     - cron: "3 0 * * 1"
 
 jobs:
