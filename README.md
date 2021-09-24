@@ -15,18 +15,17 @@ Compile OOMMF on (Debian) Linux with spack:
 [![debian-spack-v0.16.3](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.3.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.3.yml)
 
 
+More experimental are the following (and done in separate branches):
 
-Compile OOMMF on OSX with Spack's `develop` branch (see branch https://github.com/fangohr/oommf-in-spack/tree/osx for these workflows):
+1. Compile OOMMF on OSX with Spack, see `osx` branch at see https://github.com/fangohr/oommf-in-spack/tree/osx .
 
-- Spack `develop` branch, see https://github.com/fangohr/oommf-in-spack/tree/spack-develop
-  [![debian-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml)
-    [![osx-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml)
+   [![osx-spack-v0.16.2-plus-epsilon](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml)
+   [![osx-spack-v0.16.3](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.3.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.3.yml)
 
-- Compile OOMMF on OSX with Spack, see `osx` branch at see https://github.com/fangohr/oommf-in-spack/tree/osx
+2. Compile OOMMF on Debian and OSX, using Spack's `develop` branch, see https://github.com/fangohr/oommf-in-spack/tree/spack-develop .
 
-  [![osx-spack-v0.16.2-plus-epsilon](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml)
-  
-    [![osx-spack-v0.16.3](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.3.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.3.yml)
+   [![debian-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml)
+   [![osx-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml)
 
 
 
