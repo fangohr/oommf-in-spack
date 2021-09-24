@@ -12,32 +12,38 @@ Compile OOMMF on (Debian) Linux with spack:
 
 [![debian-spack-v0.16.2](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.2.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.2.yml)
 
-For information: (not part of this `main` branch)
+[![debian-spack-v0.16.3](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.3.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.3.yml)
 
-- Spack `develop` branch, see https://github.com/fangohr/oommf-in-spack/tree/spack-develop
-  [![debian-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml)
-    [![osx-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml)
 
-- Compile OOMMF on OSX with Spack:
+More experimental are the following (and done in separate branches):
 
-  [![osx-spack-v0.16.2-plus-epsilon](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml)
+1. Compile OOMMF on OSX with Spack, see `osx` branch at see https://github.com/fangohr/oommf-in-spack/tree/osx.
+
+   [![osx-spack-v0.16.2-plus-epsilon](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml)
+   [![osx-spack-v0.16.3](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.3.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.3.yml)
+
+2. Compile OOMMF on Debian and OSX, using Spack's `develop` branch, see https://github.com/fangohr/oommf-in-spack/tree/spack-develop.
+
+   [![debian-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml)
+   [![osx-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml)
+
 
 
 # Required commands
 
 ## Compilation of OOMMF
 
-At the moment, this is under development, and we need three lines:
+At the moment, this is under development, and we need three lines
 
 - get spack: `git clone https://github.com/fangohr/spack`
 - go into spack directory `cd spack`
 - checkout the right branch: `git checkout add-oommf`
 
-Then activate spack:
+Then activate spack
 
 - `source share/spack/setup-env.sh`
 
-The compile oommf (this could take some time)
+Then compile oommf (this could take some time)
 
 - `spack install oommf`
 
@@ -45,7 +51,7 @@ Ideally, there are no errors.
 
 ## Additional tests
 
-We can run some additional checks with these commands:
+We can run some additional checks with these commands
 
 - `spack test run --alias oommftest oommf`
 
@@ -54,7 +60,7 @@ To see the results, use
 
 ## To use OOMMF after installation
 
-1. Activate spack (adjust the path below if not inside spack directory):
+1. Activate spack (adjust the path below if not inside spack directory)
 
 - `source share/spack/setup-env.sh`
 

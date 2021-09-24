@@ -17,6 +17,10 @@ oommf-spack-v0.16.2:
 	docker build -f Dockerfile --build-arg SPACK_VERSION=v0.16.2 \
    -t oommf-spack-v0.16.2 .
 
+oommf-spack-v0.16.3:
+	docker build -f Dockerfile --build-arg SPACK_VERSION=v0.16.3 \
+   -t oommf-spack-v0.16.3 .
+
 run-spack-v0.16.2:
 	docker run --rm -ti oommf-spack-v0.16.2 
 
