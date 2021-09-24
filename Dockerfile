@@ -61,7 +61,7 @@ RUN mkdir $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 COPY spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack spec oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install tk
-RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install oommf
+RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install --verbose oommf
 
 # # Run spack smoke tests for oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack test run --alias oommftest oommf
