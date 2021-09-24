@@ -22,7 +22,7 @@ Compile OOMMF on OSX with Spack's `develop` branch (see branch https://github.co
   [![debian-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml)
     [![osx-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml)
 
-- Compile OOMMF on OSX with Spack:
+- Compile OOMMF on OSX with Spack, see `osx` branch at see https://github.com/fangohr/oommf-in-spack/tree/osx
 
   [![osx-spack-v0.16.2-plus-epsilon](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml)
   
