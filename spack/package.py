@@ -112,12 +112,12 @@ class Oommf(Package):
 
     def configure(self, spec, prefix):
         # change into directory with source code
-        os.chdir(self.get_oommf_source_root())
+        with working_dir(self.get_oommf_source_root()):
 
-        configure = Executable("./oommf.tcl pimake distclean")
-        configure()
-        configure2 = Executable("./oommf.tcl pimake upgrade")
-        configure2()
+            configure = Executable("./oommf.tcl pimake distclean")
+            configure()
+            configure2 = Executable("./oommf.tcl pimake upgrade")
+            configure2()
 
     def build(self, spec, prefix):
         make = Executable("./oommf.tcl pimake ")
