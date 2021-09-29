@@ -34,6 +34,10 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
+      - name: get required tools (make)
+        run: |
+          xcode-select --install
+          xcodebuild -license accept
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Install GitHub CLI
@@ -45,11 +49,15 @@ jobs:
           git clone https://github.com/spack/spack.git s
           cd s && git checkout 37e4d32d534c85e5c6bc8eee7008bf73afddadb1 && cd ..
           ./s/bin/spack --version
-      - name: compile tk and oommftest
+      - name: copy package.py into spack directories
         run: |
           mkdir s/var/spack/repos/builtin/packages/oommf
           cp -v spack/package.py s/var/spack/repos/builtin/packages/oommf
+      - name: spack spec output 
+        run: |
           source s/share/spack/setup-env.sh && spack spec oommf
+      - name: compile tk and oommftest
+        run: |
           source s/share/spack/setup-env.sh && spack install tk
           source s/share/spack/setup-env.sh && spack install oommf
       - name: run smoke tests
