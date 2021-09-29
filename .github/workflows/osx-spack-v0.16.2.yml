@@ -14,19 +14,19 @@ on:
   push:
     branches: 
     - osx 
-  push:
-    branches: 
-    - main
-    paths:
-    - spack/package.py
+#  push:
+#    branches: 
+#    - main
+#    paths:
+#    - spack/package.py
   pull_request:
     branches: 
     - osx
-  pull_request:
-    branches: 
-    - main
-    paths:
-    - spack/package.py
+#  pull_request:
+#    branches: 
+#    - main
+#    paths:
+#    - spack/package.py
 
 
 
