@@ -34,10 +34,10 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - name: get required tools (make)
-        run: |
-          xcode-select --install
-          xcodebuild -license accept
+#      - name: get required tools (make)
+#        run: |
+#          xcode-select --install
+#          xcodebuild -license accept
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Install GitHub CLI
