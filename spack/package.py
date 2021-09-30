@@ -158,12 +158,17 @@ class Oommf(Package):
             for f in install_files:
                 install(os.path.join(oommfdir, f), prefix.bin)
 
-    def setup_environment(self, spack_env, run_env):
-        """Set OOMMF_ROOT so that oommf.tcl can find its files."""
+    def setup_build_environment(self, env):
+        # Seems we don't need to do anything here
+        pass
+
+    def setup_run_environment(self, env):
+        # Set OOMMF_ROOT so that oommf.tcl can find its files.
         oommfdir = self.get_oommf_path(self.prefix)
-        run_env.set("OOMMF_ROOT", oommfdir)
+        env.set("OOMMF_ROOT", oommfdir)
+
         # set OOMMFTCL so ubermag / oommf can find oommf
-        run_env.set("OOMMFTCL", join_path(oommfdir, "oommf.tcl"))
+        env.set("OOMMFTCL", join_path(oommfdir, "oommf.tcl"))
 
     @run_after("install")
     def check_install_version(self):
