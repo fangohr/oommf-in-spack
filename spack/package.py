@@ -46,6 +46,12 @@ class Oommf(Package):
     version(
         "20a2_20200608",
         sha256="a3113f2aca0b6249ee99b2f4874f31de601bd7af12498d84f28706b265fa50ab",
+    )
+
+    version(
+        "20a3_20210930-vanilla",
+        url="https://math.nist.gov/oommf/dist/oommf20a3_20210930.tar.gz",
+        sha256="a2a24c1452e66baf37fea67edbcbfb78d60c65a78c6b032a18a1de9f8bbebc92",
         preferred=True,
     )
 
