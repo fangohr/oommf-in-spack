@@ -44,10 +44,22 @@ class Oommf(Package):
 
     # version from github (uses default url variable)
     version(
-        "20a2_20200608",
-        sha256="a3113f2aca0b6249ee99b2f4874f31de601bd7af12498d84f28706b265fa50ab",
+        "20a3_20210930",
+        sha256="880242afdf4c84de7f2a3c42ab0ad8c354028a7d2d3c3160980cf3e08e285691",
         preferred=True,
     )
+
+    version(
+        "20a3_20210930-vanilla",
+        url="https://math.nist.gov/oommf/dist/oommf20a3_20210930.tar.gz",
+        sha256="a2a24c1452e66baf37fea67edbcbfb78d60c65a78c6b032a18a1de9f8bbebc92",
+    )
+
+    version(
+        "20a2_20200608",
+        sha256="a3113f2aca0b6249ee99b2f4874f31de601bd7af12498d84f28706b265fa50ab",
+    )
+
 
     version(
         "20a1_20180930_ext",
