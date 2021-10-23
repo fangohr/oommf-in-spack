@@ -56,6 +56,10 @@ RUN cd spack && git checkout $SPACK_VERSION
 # # show which version we use
 RUN $SPACK --version
 
+# install clingo (doesn't work automatically)
+RUN $SPACK install clingo-bootstrap
+RUN $SPACK load clingo-bootstrap
+
 # build OOMMF
 RUN mkdir $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 COPY spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
