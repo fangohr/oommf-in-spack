@@ -60,7 +60,6 @@ class Oommf(Package):
         sha256="a3113f2aca0b6249ee99b2f4874f31de601bd7af12498d84f28706b265fa50ab",
     )
 
-
     version(
         "20a1_20180930_ext",
         sha256="18bf9bd713c7ee6ced6d561ce742d17e0588ae24ef2e56647a5c8a7853e07a4c",
