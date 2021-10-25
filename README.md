@@ -29,7 +29,7 @@ More experimental are the following (and done in separate branches):
 
 
 
-# Required commands
+# Required commands to compile OOMMF with Spack
 
 ## Compilation of OOMMF
 
@@ -37,7 +37,7 @@ At the moment, this is under development, and we need three lines
 
 - get spack: `git clone https://github.com/fangohr/spack`
 - go into spack directory `cd spack`
-- checkout the right branch: `git checkout add-oommf`
+- checkout the right branch: `git checkout new-package-oommf`
 
 Then activate spack
 
