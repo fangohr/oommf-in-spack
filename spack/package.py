@@ -42,7 +42,6 @@ class Oommf(Package):
 
     maintainers = ["fangohr"]
 
-    # version from github (uses default url variable)
     version(
         "20a3_20210930",
         sha256="880242afdf4c84de7f2a3c42ab0ad8c354028a7d2d3c3160980cf3e08e285691",
@@ -65,7 +64,6 @@ class Oommf(Package):
         sha256="18bf9bd713c7ee6ced6d561ce742d17e0588ae24ef2e56647a5c8a7853e07a4c",
     )
 
-    # (currently most) recent version from OOMMF website
     version(
         "20a2_20200608-vanilla",
         sha256="5c349de6e698b0c2c5390aa0598ea3052169438cdcc7e298068bc03abb9761c8",
