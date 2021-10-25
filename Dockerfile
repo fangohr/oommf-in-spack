@@ -31,6 +31,7 @@ RUN        apt-get install -y --no-install-recommends \
               coreutils \
               curl \
               environment-modules \
+	      file \
               gfortran \
               git \
               openssh-server \
@@ -38,16 +39,6 @@ RUN        apt-get install -y --no-install-recommends \
               unzip \
               vim \
            && rm -rf /var/lib/apt/lists/*
-
-
-# Additional dependencies only required when clingo is used
-# (i.e. on develop branch)
-RUN apt-get -y update \
-           && apt-get install -y --no-install-recommends \
-              libpython3-dev \
-              python3-distutils \
-           && rm -rf /var/lib/apt/lists/*
-
 
 # load spack environment on login
 RUN echo "source $SPACK_ROOT/share/spack/setup-env.sh" \
