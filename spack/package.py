@@ -187,11 +187,8 @@ class Oommf(Package):
 
         print("Testing oommf.tcl +version")
 
-        # where is tcl?
         tclsh = Executable(join_path(spec["tcl"].prefix.bin, "tclsh"))
-        # where is oommf.tcl?
         oommf_tcl_path = join_path(spec.prefix.bin, "oommf.tcl")
-        # put the command together and execute
         output = tclsh(
             oommf_tcl_path, "+version", output=str.split, error=str.split, env=test_env
         )
