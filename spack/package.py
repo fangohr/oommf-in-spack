@@ -190,7 +190,6 @@ class Oommf(Package):
 
     @run_after("install")
     def check_install_version(self):
-        spec = self.spec
         test_env = {}
 
         # Make sure the correct config is found
@@ -212,7 +211,6 @@ class Oommf(Package):
 
     @run_after("install")
     def check_install_platform(self):
-        spec = self.spec
         test_env = {}
         # OOMMF needs paths to execute
         test_env["PATH"] = os.environ["PATH"]
