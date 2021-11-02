@@ -249,9 +249,9 @@ class Oommf(Package):
             oommf_tcl_path,
             "boxsi",
             "+fg",
+            "-kill",
+            "all",
             task,
-            "-exitondone",
-            "1",
             output=str.split,
             error=str.split,
             env=test_env,
@@ -307,7 +307,7 @@ class Oommf(Package):
         oommf_examples = join_path(spec.prefix.usr.bin, "oommf/app/oxs/examples")
         task = join_path(oommf_examples, "stdprob3.mif")
 
-        options = [oommf_tcl_path, "boxsi", "+fg", task, "-exitondone", "1"]
+        options = [oommf_tcl_path, "boxsi", "+fg", task, "-kill", "all"]
 
         expected = ['End "stdprob3.mif"', "Mesh geometry: 32 x 32 x 32 = 32 768 cells"]
         self.run_test(
