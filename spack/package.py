@@ -124,8 +124,10 @@ class Oommf(Package):
             return "."
         elif "oommf.tcl" in os.listdir("oommf"):
             print(
-                "Found 'oommf.tcl' in " + os.getcwd() + "/oommf " +
-                "(looks like source from Github)"
+                "Found 'oommf.tcl' in "
+                + os.getcwd()
+                + "/oommf "
+                + "(looks like source from Github)"
             )
             return "oommf"
         else:
@@ -199,7 +201,11 @@ class Oommf(Package):
 
         print("Testing oommf.tcl +version")
         output = self.tclsh(
-            self.oommf_tcl_path, "+version", output=str.split, error=str.split, env=test_env
+            self.oommf_tcl_path,
+            "+version",
+            output=str.split,
+            error=str.split,
+            env=test_env,
         )
 
         print("output received fromm oommf is %s" % output)
@@ -220,7 +226,11 @@ class Oommf(Package):
 
         print("Testing oommf.tcl +platform")
         output = self.tclsh(
-            self.oommf_tcl_path, "+platform", output=str.split, error=str.split, env=test_env
+            self.oommf_tcl_path,
+            "+platform",
+            output=str.split,
+            error=str.split,
+            env=test_env,
         )
 
         print("output received fromm oommf is %s" % output)
