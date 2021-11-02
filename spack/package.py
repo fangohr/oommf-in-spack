@@ -134,6 +134,14 @@ class Oommf(Package):
         oommfdir = os.path.join(prefix.usr.bin, "oommf")
         return oommfdir
 
+    @property
+    def oommf_tcl_path(self):
+        return join_path(self.spec.prefix.bin, "oommf.tcl")
+
+    @property
+    def tclsh(self):
+        return Executable(join_path(self.spec["tcl"].prefix.bin, "tclsh"))
+
     def configure(self, spec, prefix):
         # change into directory with source code
         with working_dir(self.get_oommf_source_root()):
@@ -186,11 +194,8 @@ class Oommf(Package):
         test_env["OOMMF_ROOT"] = oommfdir
 
         print("Testing oommf.tcl +version")
-
-        tclsh = Executable(join_path(spec["tcl"].prefix.bin, "tclsh"))
-        oommf_tcl_path = join_path(spec.prefix.bin, "oommf.tcl")
-        output = tclsh(
-            oommf_tcl_path, "+version", output=str.split, error=str.split, env=test_env
+        output = self.tclsh(
+            self.oommf_tcl_path, "+version", output=str.split, error=str.split, env=test_env
         )
 
         print("output received fromm oommf is %s" % output)
@@ -210,14 +215,8 @@ class Oommf(Package):
         test_env["OOMMF_ROOT"] = oommfdir
 
         print("Testing oommf.tcl +platform")
-
-        # where is tcl?
-        tclsh = Executable(join_path(spec["tcl"].prefix.bin, "tclsh"))
-        # where is oommf.tcl?
-        oommf_tcl_path = join_path(spec.prefix.bin, "oommf.tcl")
-        # put the command together and execute
-        output = tclsh(
-            oommf_tcl_path, "+platform", output=str.split, error=str.split, env=test_env
+        output = self.tclsh(
+            self.oommf_tcl_path, "+platform", output=str.split, error=str.split, env=test_env
         )
 
         print("output received fromm oommf is %s" % output)
@@ -237,16 +236,10 @@ class Oommf(Package):
         test_env["OOMMF_ROOT"] = oommfdir
 
         print("Testing oommf.tcl standard problem 3")
-
-        # where is tcl?
-        tclsh = Executable(join_path(spec["tcl"].prefix.bin, "tclsh"))
-        # where is oommf.tcl?
-        oommf_tcl_path = join_path(spec.prefix.bin, "oommf.tcl")
-        # put the command together and execute
         oommf_examples = join_path(spec.prefix.usr.bin, "oommf/app/oxs/examples")
         task = join_path(oommf_examples, "stdprob3.mif")
-        output = tclsh(
-            oommf_tcl_path,
+        output = self.tclsh(
+            self.oommf_tcl_path,
             "boxsi",
             "+fg",
             "-kill",
