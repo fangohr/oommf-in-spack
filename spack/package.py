@@ -148,6 +148,18 @@ class Oommf(Package):
     def tclsh(self):
         return Executable(join_path(self.spec["tcl"].prefix.bin, "tclsh"))
 
+    @property
+    def test_env(self):
+        """Create environment in which post-install tests can be run."""
+        # Make sure the correct OOMMF config.tcl is found.
+        # This environment variable (OOMMF_ROOT) seems not to be
+        # set at this point, so we have to set it manually for the test:
+        oommfdir = self.get_oommf_path(self.prefix)
+        test_env_ = {}
+        test_env_["OOMMF_ROOT"] = oommfdir
+        return test_env_
+
+
     def configure(self, spec, prefix):
         # change into directory with source code
         with working_dir(self.get_oommf_source_root()):
@@ -190,13 +202,7 @@ class Oommf(Package):
 
     @run_after("install")
     def check_install_version(self):
-        test_env = {}
-
-        # Make sure the correct config is found
-        # This environment variable (OOMMF_ROOT) seems not to be
-        # set at this point, so we have to set it manually for the test:
-        oommfdir = self.get_oommf_path(self.prefix)
-        test_env["OOMMF_ROOT"] = oommfdir
+        test_env = self.test_env
 
         print("Testing oommf.tcl +version")
         output = self.tclsh(
@@ -211,16 +217,11 @@ class Oommf(Package):
 
     @run_after("install")
     def check_install_platform(self):
-        test_env = {}
-        # OOMMF needs paths to execute
+        test_env = self.test_env
+
+        # OOMMF needs paths to execute +platform
         test_env["PATH"] = os.environ["PATH"]
         print("PATH=", test_env["PATH"])
-
-        # Make sure the correct config is found
-        # This environment variable (OOMMF_ROOT) seems not to be
-        # set at this point, so we have to set it manually for the test:
-        oommfdir = self.get_oommf_path(self.prefix)
-        test_env["OOMMF_ROOT"] = oommfdir
 
         print("Testing oommf.tcl +platform")
         output = self.tclsh(
@@ -236,16 +237,7 @@ class Oommf(Package):
     @run_after("install")
     def check_install_stdprob3(self):
         spec = self.spec
-        test_env = {}
-        # OOMMF needs paths to execute
-        test_env["PATH"] = os.environ["PATH"]
-        print("PATH=", test_env["PATH"])
-
-        # Make sure the correct config is found
-        # This environment variable (OOMMF_ROOT) seems not to be
-        # set at this point, so we have to set it manually for the test:
-        oommfdir = self.get_oommf_path(self.prefix)
-        test_env["OOMMF_ROOT"] = oommfdir
+        test_env = self.test_env
 
         print("Testing oommf.tcl standard problem 3")
         oommf_examples = join_path(spec.prefix.usr.bin, "oommf/app/oxs/examples")
