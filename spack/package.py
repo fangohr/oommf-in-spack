@@ -159,7 +159,6 @@ class Oommf(Package):
         test_env_["OOMMF_ROOT"] = oommfdir
         return test_env_
 
-
     def configure(self, spec, prefix):
         # change into directory with source code
         with working_dir(self.get_oommf_source_root()):
