@@ -201,8 +201,6 @@ class Oommf(Package):
 
     def _check_install_oommf_command(self, oommf_args):
         "Given a list of arguments for oommf.tcl, execute those."
-        test_env = self.test_env
-
         print("Testing oommf.tcl with arguments: " + str(oommf_args))
 
         # the "+platform" test needs the following environment variable:
@@ -214,7 +212,7 @@ class Oommf(Package):
             *oommf_args,
             output=str.split,
             error=str.split,
-            env=test_env,
+            env=self.test_env
         )
 
         print("output received from oommf is %s" % output)
