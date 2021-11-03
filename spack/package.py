@@ -155,8 +155,7 @@ class Oommf(Package):
         # This environment variable (OOMMF_ROOT) seems not to be
         # set at this point, so we have to set it manually for the test:
         oommfdir = self.get_oommf_path(self.prefix)
-        test_env_ = {}
-        test_env_["OOMMF_ROOT"] = oommfdir
+        test_env_ = {"OOMMF_ROOT": oommfdir}
         return test_env_
 
     def configure(self, spec, prefix):
@@ -199,60 +198,46 @@ class Oommf(Package):
         # set OOMMFTCL so ubermag / oommf can find oommf
         env.set("OOMMFTCL", join_path(oommfdir, "oommf.tcl"))
 
-    @run_after("install")
-    def check_install_version(self):
+
+    def _check_install_oommf_command(self, oommf_args):
+        "Given a list of arguments for oommf.tcl, execute those."
         test_env = self.test_env
 
-        print("Testing oommf.tcl +version")
+        print("Testing oommf.tcl with arguments: " + str(oommf_args))
+
+        # the "+platform" test needs the following environment variable:
+        if oommf_args == ["+platform"]:
+            test_env["PATH"] = os.environ["PATH"]
+
         output = self.tclsh(
             self.oommf_tcl_path,
-            "+version",
+            *oommf_args,
             output=str.split,
             error=str.split,
             env=test_env,
         )
 
-        print("output received fromm oommf is %s" % output)
+        print("output received from oommf is %s" % output)
+
+    @run_after("install")
+    def check_install_version(self):
+        self._check_install_oommf_command(["+version"])
 
     @run_after("install")
     def check_install_platform(self):
-        test_env = self.test_env
-
-        # OOMMF needs paths to execute +platform
-        test_env["PATH"] = os.environ["PATH"]
-        print("PATH=", test_env["PATH"])
-
-        print("Testing oommf.tcl +platform")
-        output = self.tclsh(
-            self.oommf_tcl_path,
-            "+platform",
-            output=str.split,
-            error=str.split,
-            env=test_env,
-        )
-
-        print("output received fromm oommf is %s" % output)
+        self._check_install_oommf_command(["+platform"])
 
     @run_after("install")
     def check_install_stdprob3(self):
-        spec = self.spec
-        test_env = self.test_env
-
-        print("Testing oommf.tcl standard problem 3")
-        oommf_examples = join_path(spec.prefix.usr.bin, "oommf/app/oxs/examples")
+        oommf_examples = join_path(self.spec.prefix.usr.bin,
+                                   "oommf/app/oxs/examples")
         task = join_path(oommf_examples, "stdprob3.mif")
-        output = self.tclsh(
-            self.oommf_tcl_path,
+        self._check_install_oommf_command([
             "boxsi",
             "+fg",
             "-kill",
             "all",
-            task,
-            output=str.split,
-            error=str.split,
-            env=test_env,
-        )
-        print("output received fromm oommf is %s" % output)
+            task])
 
     def test(self):
         """Run these smoke tests when requested explicitly"""
@@ -263,7 +248,7 @@ class Oommf(Package):
         oommf_tcl_path = join_path(spec.prefix.bin, "oommf.tcl")
         options = [oommf_tcl_path, "+version"]
         purpose = "Check oommf.tcl can execute (+version)"
-        expected = ["oommf.tcl"]
+        expected = ["info:"]
 
         self.run_test(
             exe,
