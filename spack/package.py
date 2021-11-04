@@ -227,15 +227,9 @@ class Oommf(Package):
 
     @run_after("install")
     def check_install_stdprob3(self):
-        oommf_examples = join_path(self.spec.prefix.usr.bin,
-                                   "oommf/app/oxs/examples")
+        oommf_examples = join_path(self.spec.prefix.usr.bin, "oommf/app/oxs/examples")
         task = join_path(oommf_examples, "stdprob3.mif")
-        self._check_install_oommf_command([
-            "boxsi",
-            "+fg",
-            "-kill",
-            "all",
-            task])
+        self._check_install_oommf_command(["boxsi", "+fg", "-kill", "all", task])
 
     def test(self):
         """Run these smoke tests when requested explicitly"""
