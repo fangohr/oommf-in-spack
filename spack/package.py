@@ -198,7 +198,6 @@ class Oommf(Package):
         # set OOMMFTCL so ubermag / oommf can find oommf
         env.set("OOMMFTCL", join_path(oommfdir, "oommf.tcl"))
 
-
     def _check_install_oommf_command(self, oommf_args):
         "Given a list of arguments for oommf.tcl, execute those."
         print("Testing oommf.tcl with arguments: " + str(oommf_args))
