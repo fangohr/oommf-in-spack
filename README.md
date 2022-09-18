@@ -12,7 +12,7 @@ Compile OOMMF on (Debian) Linux with spack:
 
 [![debian-spack-v0.18.1](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.18.1.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.18.1.yml)
 
-[![debian-spack-v0.16.3](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.3.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.3.yml)
+[![debian-spack-v0.18.0](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.18.0.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.18.0.yml)
 
 
 More experimental are the following (and done in separate branches):
