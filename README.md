@@ -10,9 +10,9 @@ Compile OOMMF in Debian (without spack):
 
 Compile OOMMF on (Debian) Linux with spack using the [oommf/package.py](oommf/package.py) file in this repository:
 
-[![debian-spack-v0.16.2](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.2.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.2.yml)
+[![debian-spack-v0.18.1](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.18.1.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.18.1.yml)
 
-[![debian-spack-v0.16.3](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.3.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.3.yml)
+[![debian-spack-v0.18.0](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.18.0.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.18.0.yml)
 
 Compile OOMMF on (Debian) Linux with the latest spack release, using the [oommf/package.py](https://github.com/spack/spack/blob/develop/var/spack/repos/builtin/packages/oommf/package.py) included in that spack version.
 
@@ -24,7 +24,7 @@ More experimental are the following (and done in separate branches):
 
 1. Compile OOMMF on OSX with Spack, see `osx` branch at see https://github.com/fangohr/oommf-in-spack/tree/osx.
 
-   [![osx-spack-v0.16.2-plus-epsilon](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.2.yml)
+   [![osx-spack-v0.18.1-plus-epsilon](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.18.1.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.18.1.yml)
    [![osx-spack-v0.16.3](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.3.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.3.yml)
 
 2. Compile OOMMF on Debian and OSX, using Spack's `develop` branch, see https://github.com/fangohr/oommf-in-spack/tree/spack-develop.
