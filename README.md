@@ -8,11 +8,16 @@ Compile OOMMF in Debian (without spack):
 
 [![debian-compile-oommf-natively](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-compile-oommf-natively.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-compile-oommf-natively.yml)
 
-Compile OOMMF on (Debian) Linux with spack:
+Compile OOMMF on (Debian) Linux with spack using the [oommf/package.py](oommf/package.py) file in this repository:
 
 [![debian-spack-v0.16.2](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.2.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.2.yml)
 
 [![debian-spack-v0.16.3](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.3.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.16.3.yml)
+
+Compile OOMMF on (Debian) Linux with the latest spack release, using the [oommf/package.py](https://github.com/spack/spack/blob/develop/var/spack/repos/builtin/packages/oommf/package.py) included in that spack version.
+
+[![builtin-oommf-from-latest-spack](https://github.com/fangohr/oommf-in-spack/actions/workflows/builtin-oommf-from-latest-spack.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/builtin-oommf-from-latest-spack.yml)
+
 
 
 More experimental are the following (and done in separate branches):
