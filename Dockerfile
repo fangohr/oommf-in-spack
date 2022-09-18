@@ -57,10 +57,17 @@ RUN cd spack && git checkout $SPACK_VERSION
 RUN $SPACK --version
 
 # build OOMMF
-## on more recent spack versions (>=0.18 the least), oommf is already included
+
+# on more recent spack versions (>=0.18 the least), oommf is already included
 # RUN mkdir $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
+
+# in general, we want to test the 'oommf/package.py' file in this repository, so
+# let's take it to override the one that comes with spack:
 COPY spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
+
+# now build oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack spec oommf
+# build tk separately - used to be a common reason for problems
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install tk
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install oommf
 
