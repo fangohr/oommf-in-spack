@@ -81,7 +81,7 @@ RUN mkdir mif-examples
 COPY --chown=user:user mif-examples/* mif-examples/
 RUN ls -l mif-examples
 # # 
-RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
+RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg -kill all mif-examples/stdprob3.mif 
 
 CMD /bin/bash -l
 
