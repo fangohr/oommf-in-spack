@@ -1,0 +1,74 @@
+name: osx-spack-v0.18.1
+
+# Note: Compilation on OSX with v0.18.1 seems to fail:
+# https://github.com/fangohr/oommf-in-spack/pull/12/checks?check_run_id=3503270682#step:5:66
+# We take a slightly more recent snapshot:
+
+# # commit 37e4d32d534c85e5c6bc8eee7008bf73afddadb1 (HEAD -> develop, origin/develop, origin/HEAD)
+# # Author: Adam J. Stewart <ajstewart426@gmail.com>
+# # Date:   Fri Aug 20 08:03:33 2021 -0500
+
+# from after 18.1 but before the next release.
+
+on:
+  push:
+    branches: 
+    - osx 
+#  push:
+#    branches: 
+#    - main
+#    paths:
+#    - spack/package.py
+  pull_request:
+    branches: 
+    - osx
+#  pull_request:
+#    branches: 
+#    - main
+#    paths:
+#    - spack/package.py
+  workflow_dispatch:
+  # run pipeline on the 25th of every month, at 05:30
+  schedule:
+    - cron: '30 5 19 * *'
+
+
+
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+#      - name: get required tools (make)
+#        run: |
+#          xcode-select --install
+#          xcodebuild -license accept
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Install GitHub CLI
+        run: |
+          brew update
+          brew install gh
+      - name: install spack
+        run: |
+          git clone https://github.com/spack/spack.git s
+          cd s && git checkout v0.18.0 && cd ..
+          ./s/bin/spack --version
+      - name: copy package.py into spack directories
+        run: |
+          # mkdir s/var/spack/repos/builtin/packages/oommf
+          cp -v spack/package.py s/var/spack/repos/builtin/packages/oommf
+      - name: spack spec output 
+        run: |
+          source s/share/spack/setup-env.sh && spack spec oommf
+      - name: compile tk and oommftest
+        run: |
+          source s/share/spack/setup-env.sh && spack install tk
+          source s/share/spack/setup-env.sh && spack install oommf
+      - name: run smoke tests
+        run: |
+          . s/share/spack/setup-env.sh && spack test run --alias oommftest oommf
+          . s/share/spack/setup-env.sh && spack test results -l oommftest 
+      - name: run standard problem 3 directly
+        run: |
+          . s/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg mif-examples/stdprob3.mif -exitondone 1
