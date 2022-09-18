@@ -1,16 +1,12 @@
-name: debian-spack-v0.16.3
+name: builtin-oommf-from-latest-spack
 
 on:
   push:
     branches:
-      - main
+      - main 
   pull_request:
     branches:
       - main
-  workflow_dispatch:
-  # run pipeline on the 25th of every month, at 05:30
-  schedule:
-    - cron: '30 5 19 * *'
 
 jobs:
 
@@ -21,5 +17,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: make oommf-spack-v0.16.3
+      run: make builtin-oommf-from-latest-spack
       
