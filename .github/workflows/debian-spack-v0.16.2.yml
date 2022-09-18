@@ -8,6 +8,9 @@ on:
     branches:
       - main
   workflow_dispatch:
+  # run pipeline on the 25th of every month, at 05:30
+  schedule:
+    - cron: '30 5 * 25 *'
 
 jobs:
 
