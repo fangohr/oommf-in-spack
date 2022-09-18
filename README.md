@@ -40,17 +40,17 @@ More experimental are the following (and done in separate branches):
 
 At the moment, this is under development, and we need three lines
 
-- get spack: `git clone https://github.com/fangohr/spack`
-- go into spack directory `cd spack`
-- checkout the right branch: `git checkout new-package-oommf`
+1. install spack as [described here](https://spack.readthedocs.io/en/latest/getting_started.html#installation):
 
-Then activate spack
+   `git clone -c feature.manyFiles=true https://github.com/spack/spack.git ~/spack`
+   
+2. cd into spack directory with: `cd ~/spack`
 
-- `source share/spack/setup-env.sh`
+3. activate spack with `source share/spack/setup-env.sh`
 
-Then compile oommf (this could take some time)
+4. Then compile oommf (this could take some time):
 
-- `spack install oommf`
+  `spack install oommf`
 
 Ideally, there are no errors.
 
