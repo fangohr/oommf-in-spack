@@ -1,0 +1,25 @@
+name: debian-spack-v0.18.0
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+  # run pipeline on the 25th of every month, at 05:30
+  schedule:
+    - cron: '30 5 19 * *'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: make oommf-spack-v0.18.0
+      
