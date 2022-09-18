@@ -27,9 +27,9 @@ oommf-spack-v0.18.0:
 run-spack-v0.18.1:
 	docker run --rm -ti oommf-spack-v0.18.1 
 
-builtin-oommf-from-latest-spack:
-	docker build -f Dockerfile-builtin-oommf-from-latest-spack --build-arg SPACK_VERSION=latest \
-   -t oommf-spack-latest
+builtin-oommf-from-latest-spack: 
+	docker build -f Dockerfile-builtin-oommf-from-latest-spack --build-arg SPACK_VERSION=releases/latest \
+   -t builtin-oommf-from-latest-spack-latest .
 
+.PHONY: oommf-native run-native oommf-spack-v0.18.1 oommf-spack run-spack run-spack-v0.18.1  builtin-oommf-from-latest-spack 
 
-.PHONY: oommf-native run-native oommf-spack-v0.18.1 oommf-spack run-spack run-spack-v0.18.1
