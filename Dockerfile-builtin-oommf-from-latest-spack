@@ -31,6 +31,7 @@ RUN        apt-get install -y --no-install-recommends \
               coreutils \
               curl \
               environment-modules \
+              file \
               gfortran \
               git \
               openssh-server \
