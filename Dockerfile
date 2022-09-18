@@ -57,7 +57,8 @@ RUN cd spack && git checkout $SPACK_VERSION
 RUN $SPACK --version
 
 # build OOMMF
-RUN mkdir $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
+## on more recent spack versions (>=0.18 the least), oommf is already included
+# RUN mkdir $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 COPY spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack spec oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install tk
