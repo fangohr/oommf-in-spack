@@ -1,6 +1,12 @@
 oommf-in-spack
 ==============
 
+
+.. sectnum::
+
+.. contents:: 
+
+
 Support repository for getting the
 `OOMMF <https://math.nist.gov/oommf/>`__ package into
 `Spack <http://spack.readthedocs.io>`__.
