@@ -1,11 +1,13 @@
-oommf-in-spack
-==============
-
-
 .. sectnum::
 
 .. contents:: 
 
+
+oommf-in-spack
+==============
+
+Introduction
+------------
 
 Support repository for getting the
 `OOMMF <https://math.nist.gov/oommf/>`__ package into
@@ -82,7 +84,7 @@ To use OOMMF after installation
 Now ``oommf.tcl`` should be in the path and can be used as usual.
 
 Experimental work in progress (OSX)
------------------------------------
+===================================
 
 More experimental are the following (and done in separate branches):
 
