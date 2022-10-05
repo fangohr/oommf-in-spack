@@ -10,9 +10,8 @@ spack-develop-run:
 
 # use particular versions of spack
 spack-latest:
-	docker build -f Dockerfile --build-arg SPACK_VERSION=releases/latest \
-   -t spack-latest .
-releases/latest
+	docker build -f Dockerfile --build-arg SPACK_VERSION=releases/latest -t spack-latest .
+
 
 # not using spack, but Debian system tools to build OOMMF
 native:
