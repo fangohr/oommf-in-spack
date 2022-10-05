@@ -30,4 +30,6 @@ RUN echo "tclsh oommf.tcl boxsi +fg app/oxs/examples/stdprob3.mif -kill all" > r
 # execute test (takes about 14 seconds on 2 threads)
 RUN sh run-test.sh
 
+RUN ./oommf.tcl --version
+
 CMD /bin/bash
