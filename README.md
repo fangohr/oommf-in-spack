@@ -6,18 +6,13 @@ Support repository for getting the [OOMMF](https://math.nist.gov/oommf/) package
 
 Compile OOMMF in Debian (without spack, just for reference):
 
-[![debian-compile-oommf-natively](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-compile-oommf-natively.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-compile-oommf-natively.yml)
+[![native](https://github.com/fangohr/oommf-in-spack/actions/workflows/native.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/native.yml)
 
 Compile OOMMF on (Debian) Linux with spack using the [oommf/package.py](oommf/package.py) file in this repository:
 
-[![debian-spack-v0.18.1](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.18.1.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.18.1.yml)
+[![spack-latest-release](https://github.com/fangohr/oommf-in-spack/actions/workflows/spack-latest-release.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/spack-latest-release.yml)
 
-[![debian-spack-v0.18.0](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.18.0.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-v0.18.0.yml)
-
-Compile OOMMF on (Debian) Linux with the latest spack release, using the [oommf/package.py](https://github.com/spack/spack/blob/develop/var/spack/repos/builtin/packages/oommf/package.py) included in that spack version.
-
-[![builtin-oommf-from-latest-spack](https://github.com/fangohr/oommf-in-spack/actions/workflows/builtin-oommf-from-latest-spack.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/builtin-oommf-from-latest-spack.yml)
-
+[![spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/spack-develop.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/spack-develop.yml)
 
 
 More experimental are the following (and done in separate branches):
@@ -31,7 +26,6 @@ More experimental are the following (and done in separate branches):
 
    [![debian-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml)
    [![osx-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml)
-
 
 
 # Required commands to compile OOMMF with Spack
