@@ -4,7 +4,7 @@ Support repository for getting the [OOMMF](https://math.nist.gov/oommf/) package
 
 ## Status
 
-Compile OOMMF in Debian (without spack):
+Compile OOMMF in Debian (without spack, just for reference):
 
 [![debian-compile-oommf-natively](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-compile-oommf-natively.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-compile-oommf-natively.yml)
 
