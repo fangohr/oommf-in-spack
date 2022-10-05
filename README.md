@@ -2,6 +2,13 @@
 
 Support repository for getting the [OOMMF](https://math.nist.gov/oommf/) package into [Spack](http://spack.readthedocs.io).
 
+Mostly aimed for maintainers of the OOMMF package in spack: to test changes to the 
+[oommf/spack.py](https://raw.githubusercontent.com/spack/spack/develop/var/spack/repos/builtin/packages/oommf/package.py) 
+file before request merges in spack upstream.
+
+There is a related effort to run some tests on the OOMMF package in spack for older versions of spack at https://github.com/fangohr/spack-ci-oommf .
+
+
 ## Status
 
 Compile OOMMF in Debian (without spack, just for reference):
@@ -15,17 +22,6 @@ Compile OOMMF on (Debian) Linux with spack using the [oommf/package.py](oommf/pa
 [![spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/spack-develop.yml/badge.svg)](https://github.com/fangohr/oommf-in-spack/actions/workflows/spack-develop.yml)
 
 
-More experimental are the following (and done in separate branches):
-
-1. Compile OOMMF on OSX with Spack, see `osx` branch at see https://github.com/fangohr/oommf-in-spack/tree/osx.
-
-   [![osx-spack-v0.18.1-plus-epsilon](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.18.1.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.18.1.yml)
-   [![osx-spack-v0.16.3](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.3.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.3.yml)
-
-2. Compile OOMMF on Debian and OSX, using Spack's `develop` branch, see https://github.com/fangohr/oommf-in-spack/tree/spack-develop.
-
-   [![debian-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml)
-   [![osx-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml)
 
 
 # Required commands to compile OOMMF with Spack
@@ -74,3 +70,16 @@ Now `oommf.tcl` should be in the path and can be used as usual.
 
 
 
+## Experimental work in progress (OSX)
+
+More experimental are the following (and done in separate branches):
+
+1. Compile OOMMF on OSX with Spack, see `osx` branch at https://github.com/fangohr/oommf-in-spack/tree/osx.
+
+   [![osx-spack-v0.18.1-plus-epsilon](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.18.1.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.18.1.yml)
+   [![osx-spack-v0.16.3](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.3.yml/badge.svg?branch=osx)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-v0.16.3.yml)
+
+2. Compile OOMMF on Debian and OSX, using Spack's `develop` branch, see https://github.com/fangohr/oommf-in-spack/tree/spack-develop.
+
+   [![debian-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/debian-spack-develop.yml)
+   [![osx-spack-develop](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml/badge.svg?branch=spack-develop)](https://github.com/fangohr/oommf-in-spack/actions/workflows/osx-spack-develop.yml)
