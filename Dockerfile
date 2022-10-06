@@ -73,10 +73,12 @@ RUN $SPACK --version
 COPY spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 
 # now build oommf
-RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack spec $OOMMF_VERSION
+RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack spec $OOMMF1_VERSION
+RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack spec $OOMMF2_VERSION
 # build tk separately - used to be a common reason for problems
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install tk
-RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install $OOMMF_VERSION
+RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install $OOMMF1_VERSION
+RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install $OOMMF2_VERSION
 
 # # Run spack smoke tests for oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack test run --alias oommftest oommf
