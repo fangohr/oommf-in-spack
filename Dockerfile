@@ -6,8 +6,11 @@ FROM debian:bullseye
 ARG SPACK_VERSION=develop
 RUN echo "Building with spack version ${SPACK_VERSION}"
 
-ARG OOMMF_VERSION=oommf
-RUN echo "Installing ${OOMMF_VERSION}"
+# Allow to build multiple versions of OOMMF with the same spack
+# support libraries:
+ARG OOMMF1_VERSION=oommf
+ARG OOMMF2_VERSION=oommf
+RUN echo "Installing ${OOMMF1_VERSION} and ${OOMMF2_VERSION}"
 
 # Any extra packages to be installed in the host
 ARG EXTRA_PACKAGES
