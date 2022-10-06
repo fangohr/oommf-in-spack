@@ -6,6 +6,9 @@ FROM debian:bullseye
 ARG SPACK_VERSION=develop
 RUN echo "Building with spack version ${SPACK_VERSION}"
 
+ARG OOMMF_VERSION=oommf
+RUN echo "Installing ${OOMMF_VERSION}"
+
 # Any extra packages to be installed in the host
 ARG EXTRA_PACKAGES
 RUN echo "Installing EXTRA_PACKAGES ${EXTRA_PACKAGES} on container host"
@@ -67,10 +70,10 @@ RUN $SPACK --version
 COPY spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/oommf
 
 # now build oommf
-RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack spec oommf
+RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack spec $OOMMF_VERSION
 # build tk separately - used to be a common reason for problems
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install tk
-RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install oommf
+RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack install $OOMMF_VERSION
 
 # # Run spack smoke tests for oommf
 RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack test run --alias oommftest oommf
@@ -80,8 +83,8 @@ RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack test results -l oommftest
 RUN mkdir mif-examples
 COPY --chown=user:user mif-examples/* mif-examples/
 RUN ls -l mif-examples
-# # 
-RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg -kill all mif-examples/stdprob3.mif 
+# #
+RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg -kill all mif-examples/stdprob3.mif
 
 CMD /bin/bash -l
 
