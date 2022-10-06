@@ -88,8 +88,9 @@ RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack test results -l oommftest
 RUN mkdir mif-examples
 COPY --chown=user:user mif-examples/* mif-examples/
 RUN ls -l mif-examples
-# #
-RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load oommf && oommf.tcl boxsi +fg -kill all mif-examples/stdprob3.mif
+# Run example simulations
+RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load $OOMMF1_VERSION && oommf.tcl boxsi +fg -kill all mif-examples/stdprob3.mif
+RUN . $SPACK_ROOT/share/spack/setup-env.sh && spack load $OOMMF2_VERSION && oommf.tcl boxsi +fg -kill all mif-examples/stdprob3.mif
 
 CMD /bin/bash -l
 
