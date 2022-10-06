@@ -15,7 +15,7 @@ spack-latest:
 
 # not using spack, but Debian system tools to build OOMMF
 native:
-	docker build -f Dockerfile-without-spack -t oommf-native .
+	docker build -f Dockerfile-without-spack -t oommf-native --build-arg OOMMF_DOWNLOAD_URL=https://math.nist.gov/oommf/dist/oommf20a3_20210930.tar.gz .
 
 native-run:
 	docker run -ti oommf-native
