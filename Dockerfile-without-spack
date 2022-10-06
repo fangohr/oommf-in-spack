@@ -1,6 +1,8 @@
 FROM debian:bullseye
 RUN /bin/bash
 
+ARG OOMMF_DOWNLOAD_URL=https://math.nist.gov/oommf/dist/oommf20a3_20210930.tar.gz
+
 # Avoid asking for geographic data when installing tzdata.
 # ENV DEBIAN_FRONTEND noninteractive
 
@@ -14,8 +16,8 @@ RUN adduser user
 USER user
 WORKDIR /home/user
 
-# Fetch OOMMF (XXX hard coded URL here!)
-RUN wget https://math.nist.gov/oommf/dist/oommf20a3_20210930.tar.gz
+# Fetch OOMMf (from NIST)
+RUN wget $OOMMF_DOWNLOAD_URL
 RUN tar xfz oommf20a3_20210930.tar.gz
 WORKDIR /home/user/oommf
 
