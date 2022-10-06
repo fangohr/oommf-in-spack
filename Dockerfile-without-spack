@@ -16,7 +16,7 @@ RUN adduser user
 USER user
 WORKDIR /home/user
 
-# Fetch OOMMF (XXX hard coded URL here!)
+# Fetch OOMMf (from NIST)
 RUN wget $OOMMF_DOWNLOAD_URL
 RUN tar xfz oommf20a3_20210930.tar.gz
 WORKDIR /home/user/oommf
