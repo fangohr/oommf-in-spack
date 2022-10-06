@@ -1,35 +1,32 @@
-# Most targets below will checkout spack, then use the ~oommf/package.py~ file
+# Most targets below will checkout spack, then use the ~spack/package.py~ file
 # to build the package based on this file.
 
-# not using spack, but Debian system tools to build OOMMF
-oommf-native:
-	docker build -f Dockerfile-without-spack -t oommf-native .
-run-native:
-	docker run -ti oommf-native
-
-
 # Install oomm via spack. Using most recent spack version
-oommf-spack:
-	docker build -f Dockerfile -t oommf-spack --build-arg SPACK_VERSION=develop  .
+spack-develop:
+	docker build -f Dockerfile -t spack-develop --build-arg SPACK_VERSION=develop  .
 
-run-spack:
-	docker run --rm -ti oommf-spack 
+spack-develop-run:
+	docker run --rm -ti spack-develop 
 
 # use particular versions of spack
-oommf-spack-v0.18.1:
-	docker build -f Dockerfile --build-arg SPACK_VERSION=v0.18.1 \
-   -t oommf-spack-v0.18.1 .
+spack-latest:
+	docker build -f Dockerfile --build-arg SPACK_VERSION=releases/latest -t spack-latest .
 
-oommf-spack-v0.18.0:
-	docker build -f Dockerfile --build-arg SPACK_VERSION=v0.18.0 \
-   -t oommf-spack-v0.18.0 .
 
-run-spack-v0.18.1:
-	docker run --rm -ti oommf-spack-v0.18.1 
+# not using spack, but Debian system tools to build OOMMF
+native:
+	docker build -f Dockerfile-without-spack -t oommf-native .
 
-builtin-oommf-from-latest-spack: 
-	docker build -f Dockerfile-builtin-oommf-from-latest-spack --build-arg SPACK_VERSION=releases/latest \
-   -t builtin-oommf-from-latest-spack-latest .
+native-run:
+	docker run -ti oommf-native
 
-.PHONY: oommf-native run-native oommf-spack-v0.18.1 oommf-spack run-spack run-spack-v0.18.1  builtin-oommf-from-latest-spack 
+# tools to make comparison with upstream package file easier
+
+diff:
+	@echo "Compare (diff) spack/package.py with current package.py from spack develop"
+	wget --output-document=spack/package-upstream.py https://raw.githubusercontent.com/spack/spack/develop/var/spack/repos/builtin/packages/oommf/package.py
+	diff spack/package-upstream.py spack/package.py || true
+
+
+.PHONY: native native-run spack-develop spack-develop-run spack-latest diff
 
