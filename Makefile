@@ -3,7 +3,7 @@
 
 # Install oomm via spack. Using most recent spack version
 spack-develop:
-	docker build -f Dockerfile -t spack-develop --build-arg SPACK_VERSION=develop --build-arg OOMMF1_VERSION=oommf@20a3_20210930 --build-arg OOMMF2_VERSION=oommf@20a3_20210930-vanilla .
+	docker build -f Dockerfile -t spack-develop --build-arg SPACK_VERSION=develop --build-arg OOMMF1_VERSION=oommf@20b0_20220930-vanilla --build-arg OOMMF2_VERSION=oommf@20a3_20210930 .
 
 spack-develop-run:
 	docker run --rm -ti spack-develop 
